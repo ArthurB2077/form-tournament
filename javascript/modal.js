@@ -3,21 +3,13 @@
  */
 const modalBg = document.querySelector(".bground");
 const messageModal = document.querySelector(".message-modal");
-const content = document.querySelector(".content");
 const form = document.getElementById("form");
 const formData = document.querySelectorAll(".formData");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelectorAll(".close");
 const closeMessageBtn = document.querySelectorAll(".btn-message");
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
-const birth = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
 const checkbox = document.querySelectorAll("#location1,#location2,#location3,#location4,#location5,#location6");
-const conditions = document.getElementById("checkbox1");
-const submitButton = document.getElementsByClassName("btn-submit");
-const error = document.getElementsByClassName("error-message");
+
 
 /**
  * @type {RegExp} - Regular expressions that allow to check the consistency of the data input
@@ -78,6 +70,7 @@ closeMessageBtn.forEach((cls) => cls.addEventListener("click",closeModalMessage)
  * aren't consistent with what's expected.
 */
 function validate(event) {
+    event.preventDefault();
     const toValidate = Object.values(event.target);
     function isChecked() {
         let acc = 0;
@@ -87,48 +80,40 @@ function validate(event) {
         return acc;
     }
     if (!firstRegex.test(toValidate[0].value)) {
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         if (toValidate[0].value===""){
             formData[0].setAttribute("data-error","Le champ du prénom ne peut pas être vide");
             formData[0].setAttribute("data-error-visible","true");
         }
     } else if (!lastRegex.test(toValidate[1].value)) {
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         if (toValidate[1].value===""){
             formData[1].setAttribute("data-error","Le champ du nom ne peut pas être vide");
             formData[1].setAttribute("data-error-visible","true");
         }
     } else if (!emailRegex.test(toValidate[2].value)) {
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         if (toValidate[2].value===""){
             formData[2].setAttribute("data-error","Le champ e-mail ne peut pas être vide");
             formData[2].setAttribute("data-error-visible","true");
         }
     } else if (toValidate[3].value==="") {
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         formData[3].setAttribute("data-error","Le champ de la date de naissance ne peut pas être vide");
         formData[3].setAttribute("data-error-visible","true");
     } else if (!quantityRegex.test(toValidate[4].value)) {
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         formData[4].setAttribute("data-error","Le champ des participations ne peut pas être vide");
         formData[4].setAttribute("data-error-visible","true");
     } else if (isChecked()===0){
-        event.preventDefault();
         // Check the case where the form is submitted by letting all inputs blank
         formData[5].setAttribute("data-error","Vous devez cochez une option");
         formData[5].setAttribute("data-error-visible","true");
 
     } else if (!formData[6].firstElementChild.checked) {
-        event.preventDefault();
         formData[6].setAttribute("data-error","Vous devez accepter les conditions d'utilisations");
         formData[6].setAttribute("data-error-visible","true");
     } else {
-        event.preventDefault();
         openModalMessage();
     }
 }
@@ -226,7 +211,3 @@ checkbox.forEach((rad) => rad.addEventListener("input", function (event){
         event.target.parentElement.removeAttribute("data-error-visible");
     }
 }))
-
-
-
-
