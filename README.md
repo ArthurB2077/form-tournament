@@ -1,4 +1,4 @@
-# ArthurBequie_03_14042021
+# ArthurBequie_04_14042021
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)]
 
 Projet 4 de ma formlation de développeur Front. Le projet consiste à finaliser une pop-up d'inscription à un tournoi. Les données insérées sont soumis à une validation adaptée. 
